@@ -3,44 +3,45 @@
 
 //--------------------------------------
 
-	#define LCD_RSPIN 8
-	#define LCD_ENPIN 9
-	#define LCD_DATA1 10
-	#define LCD_DATA2 11
-	#define LCD_DATA3 12
-	#define LCD_DATA4 13
+	#define LCD_RSPIN 25
+	#define LCD_ENPIN 23 
+	#define LCD_DATA1 33
+	#define LCD_DATA2 31
+	#define LCD_DATA3 29
+	#define LCD_DATA4 27
 	#define LCD_NROW 2
 	#define LCD_NCOL 16
 
 //--------------------------------------
 
-	const byte KEYPAD_NROWS=4, KEYPAD_NCOLS=4;
-	char KEYPAD_inputs[KEYPAD_NROWS][KEYPAD_NCOLS] = { {'1','2','3','A'}, {'4','5','6','B'}, {'7','8','9','C'}, {'*','0','#','D'} };
-	byte KEYPAD_colPins[KEYPAD_NCOLS] = {26,27,28,29}, KEYPAD_rowPins[KEYPAD_NROWS] = {22,23,24,25 };
+  #define RST_PIN 47     //Pin 9 para el reset del RC522
+  #define SS_PIN 37    //Pin 10 para el SS (SDA) del RC522
+  #define CODE_SIZE 4
+  byte cardCode[CODE_SIZE] =  {0xC1, 0x2F, 0xD6, 0x0E};
 
 //--------------------------------------
 
-	#define BUZZER_PIN 52
+  #define LED_PIN 49
+	#define BUZZER_PIN 51 
 	#define BUZZER_TONE 1000
 	#define BUZZER_PERIOD 1000
 
 //--------------------------------------
 
-	#define ECHOPIN 6
-	#define TRIGGERPIN  7
+	#define ECHOPIN 53
+	#define TRIGGERPIN 52  
 	#define MAXPERTURBATION 100
 
 //--------------------------------------
 
-  #define CHANGEMODE 'A'
-  #define ERASECHAR  '#'
-
-  #define PASSWD_SIZE 6
-  #define PASSWD "12345"
-
-  #define MAX_ALERT_TIME (60000)
+  #define MAX_ALERT_TIME 60000
 	#define DELAY 300
   #define NOTIFY_DELAY 5000
+
+//--------------------------------------
+
+  #define PHONENUMBER "+34636627009"
+  #define SMSCONTENT "Esto es un mensaje de prueba"
 
 //--------------------------------------
 
