@@ -21,15 +21,15 @@
 
 //--------------------------------------
 
-  #define LED_PIN 43
-  #define BUZZER_PIN 45 
+  #define LED_PIN 35
+  #define BUZZER_PIN 37 
   #define BUZZER_TONE 1000
   #define BUZZER_PERIOD 1000
 
 //--------------------------------------
 
-  #define ECHOPIN 37
-  #define TRIGGERPIN 39  
+  #define ECHOPIN 39
+  #define TRIGGERPIN 41  
   #define MAXPERTURBATION 100
 
 //--------------------------------------
@@ -40,7 +40,7 @@
 
 //--------------------------------------
 
-  #define PHONENUMBER "+34686606845"
+  #define PHONENUMBER "+34688912649"
   #define SMSCONTENT "Hablame por whatsap si te llega esto"
 
 //--------------------------------------

@@ -2,10 +2,14 @@
 #include <TimeLib.h>
 
 #include<GSM.h>
+
 #include <SPI.h>
-#include <HCSR04.h>
 #include <MFRC522.h>
+
+#include <HCSR04.h>
+
 #include <LiquidCrystal.h>
+
 #include "constants.h"
 
 void(* RESET_ARDUINO) (void) = 0;  // declare reset fuction at address 0
@@ -46,7 +50,6 @@ void setup() {
 
 
 void loop() {
-  
   switch(state){
     case ACTIVE:    alarmActiveBehaviour();   break;
     case INACTIVE:  alarmInactiveBehaviour(); break;
@@ -128,9 +131,11 @@ void alarmAlertBehaviour(){
 }
 
 boolean checkDistance(){
-  static double lastDistance = 0;
+  static double lastDistance = -2;
   double distance = distanceSensor.measureDistanceCm();
-  return ( abs(distance - lastDistance) > MAXPERTURBATION );
+  boolean result = ( abs(distance - lastDistance) > MAXPERTURBATION );
+  lastDistance = distance;
+  return result;
 }
 
 boolean checkCardReader(){
@@ -178,31 +183,3 @@ void printState(){
       break;
   }
 }
-
-#ifdef __DEBUG
-
-void checkHCSR04(){
-    double distance = distanceSensor.measureDistanceCm();
-    Serial.println(distance);
-    delay(100);
-}
-
-void checkLCD(){
-  lcd.setCursor(0, 1);
-  lcd.print(millis()/1000);
-  lcd.print(" Segundos");
-}
-
-void checkBuzzerAndLED(){
-    tone(BUZZER_PIN,BUZZER_TONE);
-    delay(1000);
-    noTone(BUZZER_PIN);
-    delay(1000);
-}
-
-void checkSMS(){
-  sms.beginSMS(PHONENUMBER);
-  sms.print(SMSCONTENT);
-  sms.endSMS();
-}
-#endif
