@@ -31,6 +31,7 @@ void setup() {
   //start lcd and print first message
   lcd.begin(LCD_NCOL, LCD_NROW);
   lcd.print("  Initializing");
+  Serial.print("  Initializing");
 
   //start card reader
   SPI.begin();
@@ -166,11 +167,15 @@ void printState(){
           lcd.print("     ALARM");
           lcd.setCursor(0,1);
           lcd.print("   ACTIVATED");
+          Serial.print("     ALARM\n");
+          Serial.print("   ACTIVATED");
           break;
       case INACTIVE:    
           lcd.print("     ALARM");
           lcd.setCursor(0,1);
           lcd.print("    INACTIVE");
+          Serial.print("     ALARM\n");
+          Serial.print("   INACTIVE");
           break;
       case ALERT: 
           time_t currentTime = now() - alertStartTime;
@@ -180,6 +185,9 @@ void printState(){
           lcd.print("      "); 
           lcd.print(remainingTime);
           lcd.print("s");
+          Serial.print("     ALERT\n");
+          Serial.print(remainingTime);
+          
       break;
   }
 }
